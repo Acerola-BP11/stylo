@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "name": "Cliente 1",
+    "email": "cliente1@example.com",
+    "address": "Rua A, 123",
+    "phone": "(11) 1234-5678"
+  },
+  {
+    "id": 2,
+    "name": "Cliente 2",
+    "email": "cliente2@example.com",
+    "address": "Rua B, 456",
+    "phone": "(11) 2345-6789"
+  },
+  {
+    "id": 3,
+    "name": "Cliente 3",
+    "email": "cliente3@example.com",
+    "address": "Rua C, 789",
+    "phone": "(11) 3456-7890"
+  },
+  {
+    "id": 4,
+    "name": "Cliente 4",
+    "email": "cliente4@example.com",
+    "address": "Rua D, 012",
+    "phone": "(11) 4567-8901"
+  },
+  {
+    "id": 5,
+    "name": "Cliente 5",
+    "email": "cliente5@example.com",
+    "address": "Rua E, 345",
+    "phone": "(11) 5678-9012"
+  },
+  {
+    "id": 6,
+    "name": "Cliente 6",
+    "email": "cliente6@example.com",
+    "address": "Rua F, 352",
+    "phone": "(11) 5678-9232"
+  }
+]
