@@ -1,7 +1,8 @@
 export default function InputClientModal({
   type,
   value,
-  id
+  id,
+  onChange
 }) {
   return (
     <input 
@@ -9,6 +10,7 @@ export default function InputClientModal({
       type={type} 
       value={value}
       id={id}
+      onChange={onChange}
     />
   )
 }

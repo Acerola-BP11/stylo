@@ -51,6 +51,7 @@ export default function TableBody({
               email={email}
               address={address}
               phone={phone}
+              close={handleCloseModalEditClient}
             />
           )}
 
