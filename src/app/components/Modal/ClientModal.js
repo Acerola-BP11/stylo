@@ -1,6 +1,11 @@
 import InputClientModal from '../Inputs/InputClientModal'
 import FormButton from '../Buttons/FormButton'
+
+import Modal from 'react-modal'
+import Image from 'next/image'
+
 import { useState } from 'react'
+import ConfirmModal from "./ConfirmModal"
 
 export default function ClientModal({
   id,
@@ -19,6 +24,8 @@ export default function ClientModal({
   close  
 }) {
   
+  Modal.setAppElement(document.getElementById('form'));
+
   const [inputCorporateName, setInputCorporateName] = useState(razao)
   const [inputResponsible, setInputResponsible] = useState(responsavel)
   const [inputDdd, setInputDdd] = useState(ddd)
@@ -80,135 +87,164 @@ export default function ClientModal({
     setInputDistrict(e.target.value)
   }
 
-  const sendForm = (e) => {
-    console.log('formulario enviado')
+  const sendForm = () => {
+    console.log('envia o form');            
   }
 
-  return (    
-    <div className="flex items-start justify-center bg-[var(--background-opacity-modal)] inset-0 fixed">
-      <form className="flex flex-col w-full items-center jusitfy-center m-10 bg-white p-5 rounded-sm">
-        <div className="flex flex-row w-full" id="datas">          
-          <div className="flex flex-col w-1/2 pr-5 border-r" id="businessData">
-            <label className="mb-2" htmlFor={id}>Razao:</label>
-            <InputClientModal 
-              type="text"
-              value={inputCorporateName}
-              id={id}
-              onChange={handleChangeCorporateName}
-            />
+  // Confirm Modal
+  const customStyles = {
+    content: {  
+      width: '300px',    
+      height: 'max-content',
+      top: '50%',
+      left: '50%',            
+      transform: 'translate(-50%, -50%)',
+    },
+  };
 
-            <label className="mb-2 mt-4" htmlFor={id}>Responsavel:</label>
-            <InputClientModal 
-              type="text"
-              value={inputResponsible}
-              id={id}
-              onChange={handleChangeResponsible}
-            />
+  const [isOpenConfirm, setiIsOpenConfirm] = useState(false)
 
-            <label className="mb-2 mt-4" htmlFor={id}>CNPJ:</label>
-            <InputClientModal 
-              type="text"
-              value={inputCnpj}
-              id={id}
-              onChange={handleChangeCnpj}
-            />
+  const handleOpenModalConfirm = () => {
+    setiIsOpenConfirm(true)      
+  }
 
-            <label className="mb-2 mt-4" htmlFor={id}>Inscrição Estadual:</label>
-            <InputClientModal 
-              type="text"
-              value={inputStateRegistration}
-              id={id}
-              onChange={handleChangeStateRegistration}
-            />
+  const handleCloseModalConfirm = () => {
+    setiIsOpenConfirm(false)    
+  }
 
-            <label className="mb-2 mt-4" htmlFor={id}>DDD:</label>
-            <InputClientModal 
-              type="text"
-              value={inputDdd}
-              id={id}
-              onChange={handleChangeDdd}
-            />
-
-            <label className="mb-2 mt-4" htmlFor={id}>Telefone:</label>
-            <InputClientModal 
-              type="phone"
-              value={inputPhone}
-              id={id}
-              onChange={handleChangePhone}
-            />
-          </div>          
-
-          <div className="flex flex-col w-1/2 pl-5" id="personalData">
-
-            <label className="mb-2" htmlFor={id}>Email:</label>      
-            <InputClientModal 
-              type="email"
-              value={inputEmail}
-              id={id}
-              onChange={handleChangeEmail}
-            />
-
-            <label className="mb-2 mt-4" htmlFor={id}>Endereço:</label>
-            <InputClientModal 
-              type="text"
-              value={inputAddress}
-              id={id}
-              onChange={handleChangeAddress}
-            />
-
-            <label className="mb-2 mt-4" htmlFor={id}>CEP:</label>
-            <InputClientModal 
-              type="text"
-              value={inputCep}
-              id={id}
-              onChange={handleChangeCep}
-            />
-
-            <label className="mb-2 mt-4" htmlFor={id}>Estado:</label>
-            <InputClientModal 
-              type="text"
-              value={inputState}
-              id={id}
-              onChange={handleChangeState}
-            />
-            
-            <label className="mb-2 mt-4" htmlFor={id}>Cidade:</label>
-            <InputClientModal 
-              type="text"
-              value={inputCity}
-              id={id}
-              onChange={handleChangeCity}
-            />
-            
-            <label className="mb-2 mt-4" htmlFor={id}>Bairro:</label>
-            <InputClientModal 
-              type="text"
-              value={inputDistrict}
-              id={id}
-              onChange={handleChangeDistrict}
-            />
-
-          </div>
-        </div>
-
-
-        <div className="flex flex-row items-center text-center justify-between w-full mt-10">
-          <FormButton
-            type="button"
-            color="bg-red-400" 
-            text="Cancelar"
-            onClick={close}
+  return (             
+    <form className="flex flex-col w-full max-w-6xl h-max items-center jusitfy-center bg-white p-5 rounded-sm" id="form">
+      <div className="flex flex-row w-full" id="datas">          
+        <div className="flex flex-col w-1/2 pr-5 border-r" id="businessData">
+          <label className="mb-2" htmlFor={id}>Razao:</label>
+          <InputClientModal 
+            type="text"
+            value={inputCorporateName}
+            id={id}
+            onChange={handleChangeCorporateName}
           />
 
-          <FormButton
-            type="submit" 
-            color="bg-green-400"
-            text="Editar"
-            onClick={sendForm}
+          <label className="mb-2 mt-4" htmlFor={id}>Responsavel:</label>
+          <InputClientModal 
+            type="text"
+            value={inputResponsible}
+            id={id}
+            onChange={handleChangeResponsible}
+          />
+
+          <label className="mb-2 mt-4" htmlFor={id}>CNPJ:</label>
+          <InputClientModal 
+            type="text"
+            value={inputCnpj}
+            id={id}
+            onChange={handleChangeCnpj}
+          />
+
+          <label className="mb-2 mt-4" htmlFor={id}>Inscrição Estadual:</label>
+          <InputClientModal 
+            type="text"
+            value={inputStateRegistration}
+            id={id}
+            onChange={handleChangeStateRegistration}
+          />
+
+          <label className="mb-2 mt-4" htmlFor={id}>DDD:</label>
+          <InputClientModal 
+            type="text"
+            value={inputDdd}
+            id={id}
+            onChange={handleChangeDdd}
+          />
+
+          <label className="mb-2 mt-4" htmlFor={id}>Telefone:</label>
+          <InputClientModal 
+            type="phone"
+            value={inputPhone}
+            id={id}
+            onChange={handleChangePhone}
+          />
+        </div>          
+
+        <div className="flex flex-col w-1/2 pl-5" id="personalData">
+
+          <label className="mb-2" htmlFor={id}>Email:</label>      
+          <InputClientModal 
+            type="email"
+            value={inputEmail}
+            id={id}
+            onChange={handleChangeEmail}
+          />
+
+          <label className="mb-2 mt-4" htmlFor={id}>Endereço:</label>
+          <InputClientModal 
+            type="text"
+            value={inputAddress}
+            id={id}
+            onChange={handleChangeAddress}
+          />
+
+          <label className="mb-2 mt-4" htmlFor={id}>CEP:</label>
+          <InputClientModal 
+            type="text"
+            value={inputCep}
+            id={id}
+            onChange={handleChangeCep}
+          />
+
+          <label className="mb-2 mt-4" htmlFor={id}>Estado:</label>
+          <InputClientModal 
+            type="text"
+            value={inputState}
+            id={id}
+            onChange={handleChangeState}
+          />
+          
+          <label className="mb-2 mt-4" htmlFor={id}>Cidade:</label>
+          <InputClientModal 
+            type="text"
+            value={inputCity}
+            id={id}
+            onChange={handleChangeCity}
+          />
+          
+          <label className="mb-2 mt-4" htmlFor={id}>Bairro:</label>
+          <InputClientModal 
+            type="text"
+            value={inputDistrict}
+            id={id}
+            onChange={handleChangeDistrict}
           />
         </div>
+      </div>
 
-      </form>
-    </div>
+
+      <div className="flex flex-row items-center text-center justify-between w-full mt-10">
+        <FormButton
+          type="button"
+          color="bg-red-400" 
+          text="Cancelar"
+          onClick={close}
+        />
+
+        <FormButton
+          type="button" 
+          color="bg-green-400"
+          text="Editar"
+          onClick={handleOpenModalConfirm}
+        />
+      </div>
+    
+      <Modal 
+        isOpen={isOpenConfirm}        
+        onRequestClose={handleCloseModalConfirm}
+        style={customStyles}
+        contentLabel="Confirma"
+      >
+        <ConfirmModal 
+          yes={sendForm}
+          no={handleCloseModalConfirm}
+        />
+      </Modal>
+    </form>
   )
 }

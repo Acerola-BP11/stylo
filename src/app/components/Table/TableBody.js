@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import Image from 'next/image'
 
+import Modal from 'react-modal'
 import ClientModal from '../Modal/ClientModal'
 
 export default function TableBody({
@@ -21,6 +22,8 @@ export default function TableBody({
   bairro
 }) {
 
+  Modal.setAppElement(document.getElementById('root'))
+
   const [isOpenEdit, setIsOpenEdit] = useState(false)
 
   const handleOpenModalEditClient = () => {
@@ -31,8 +34,19 @@ export default function TableBody({
     setIsOpenEdit(false)    
   }
 
+  // Confirm Modal
+  const customStyles = {
+    content: {        
+      minWidth: '1152px', 
+      height: 'max-content',      
+      top: '50%',      
+      left: '50%',
+      transform: 'translate(-50%, -50%)',                     
+    },
+  };
+
   return (
-    <tbody>
+    <tbody id="root">
       <tr>
         <th>
           <input type="checkbox" className="w-5 h-5 cursor-pointer"/>
@@ -60,7 +74,11 @@ export default function TableBody({
             />
           </button>
           
-          {isOpenEdit && (
+          <Modal
+            isOpen={isOpenEdit}
+            onRequestClose={handleCloseModalEditClient}
+            style={customStyles}
+          >
             <ClientModal 
               id={id}
               razao={razao}
@@ -77,7 +95,7 @@ export default function TableBody({
               bairro={bairro}
               close={handleCloseModalEditClient}
             />
-          )}
+          </Modal>
 
           <button className="p-1">
             <Image 
