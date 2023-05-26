@@ -11,7 +11,7 @@ export default function TableBody({
   responsavel,
   ddd,
   telefone,
-  endereço,
+  endereco,
   cnpj,
   inscricao_estadual,
   email,
@@ -41,7 +41,7 @@ export default function TableBody({
         <th className="font-light">{responsavel}</th>
         <th className="font-light">{ddd}</th>
         <th className="font-light">{telefone}</th>
-        <th className="font-light">{endereço}</th>
+        <th className="font-light">{endereco}</th>
         <th className="font-light">{cnpj}</th>
         <th className="font-light">{inscricao_estadual}</th>
         <th className="font-light">{email}</th>
@@ -67,7 +67,7 @@ export default function TableBody({
               responsavel={responsavel}
               ddd={ddd}
               telefone={telefone}
-              endereço={endereço}
+              endereco={endereco}
               cnpj={cnpj}
               inscricao_estadual={inscricao_estadual}
               email={email}

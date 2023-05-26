@@ -6,7 +6,7 @@ export default function InputClientModal({
 }) {
   return (
     <input 
-      className="p-2 border"
+      className="p-2 border font-light"
       type={type} 
       value={value}
       id={id}

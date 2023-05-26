@@ -4,32 +4,80 @@ import { useState } from 'react'
 
 export default function ClientModal({
   id,
-  name,
+  razao,
+  responsavel,
+  ddd,
+  telefone,
+  endereco,
+  cnpj,
+  inscricao_estadual,
   email,
-  address,
-  phone,
+  cep,
+  estado,
+  cidade,
+  bairro,
   close  
 }) {
   
-  const [inputName, setInputName] = useState(name)
+  const [inputCorporateName, setInputCorporateName] = useState(razao)
+  const [inputResponsible, setInputResponsible] = useState(responsavel)
+  const [inputDdd, setInputDdd] = useState(ddd)
+  const [inputPhone, setInputPhone] = useState(telefone)  
+  const [inputAddress, setInputAddress] = useState(endereco)
+  const [inputCnpj, setInputCnpj] = useState(cnpj)
+  const [inputStateRegistration, setInputStateRegistration] = useState(inscricao_estadual)
   const [inputEmail, setInputEmail] = useState(email)
-  const [inputAddress, setInputAddress] = useState(address)
-  const [inputPhone, setInputPhone] = useState(phone)  
+  const [inputCep, setInputCep] = useState(cep)
+  const [inputState, setInputState] = useState(estado)
+  const [inputCity, setInputCity] = useState(cidade)
+  const [inputDistrict, setInputDistrict] = useState(bairro)
 
-  const handleChangeName = (e) => {
-    setInputName(e.target.value)
+  const handleChangeCorporateName = (e) => {
+    setInputCorporateName(e.target.value)
   }
 
-  const handleChangeEmail = (e) => {
-    setInputEmail(e.target.value)
+  const handleChangeResponsible = (e) => {
+    setInputResponsible(e.target.value)
+  }
+
+  const handleChangeDdd = (e) => {
+    setInputDdd(e.target.value)
+  }
+  
+  const handleChangePhone = (e) => {
+    setInputPhone(e.target.value)
   }
 
   const handleChangeAddress = (e) => {
     setInputAddress(e.target.value)
   }
 
-  const handleChangePhone = (e) => {
-    setInputPhone(e.target.value)
+  const handleChangeCnpj = (e) => {
+    setInputCnpj(e.target.value)
+  }
+
+  const handleChangeStateRegistration = (e) => {
+    setInputStateRegistration(e.target.value)
+  }
+
+  const handleChangeEmail = (e) => {
+    setInputEmail(e.target.value)
+  }
+
+  const handleChangeCep = (e) => {
+    setInputCep(e.target.value)
+  }
+
+  const handleChangeState = (e) => {
+    setInputState(e.target.value)
+  }
+
+  const handleChangeCity = (e) => {
+    setInputCity(e.target.value)
+  }
+
+  const handleChangeDistrict = (e) => {
+    setInputDistrict(e.target.value)
   }
 
   const sendForm = (e) => {
@@ -37,40 +85,113 @@ export default function ClientModal({
   }
 
   return (    
-    <div className="flex items-center justify-center bg-[var(--background-opacity-modal)] inset-0 fixed">
-      <form className="flex flex-col w-96 bg-white p-5 rounded-sm">
-        <label className="mb-2 mt-4" htmlFor={id}>Nome:</label>
-        <InputClientModal 
-          type="text"
-          value={inputName}
-          id={id}
-          onChange={handleChangeName}
-        />
+    <div className="flex items-start justify-center bg-[var(--background-opacity-modal)] inset-0 fixed">
+      <form className="flex flex-col w-full items-center jusitfy-center m-10 bg-white p-5 rounded-sm">
+        <div className="flex flex-row w-full" id="datas">          
+          <div className="flex flex-col w-1/2 pr-5 border-r" id="businessData">
+            <label className="mb-2" htmlFor={id}>Razao:</label>
+            <InputClientModal 
+              type="text"
+              value={inputCorporateName}
+              id={id}
+              onChange={handleChangeCorporateName}
+            />
 
-        <label className="mb-2 mt-4" htmlFor={id}>Email:</label>      
-        <InputClientModal 
-          type="email"
-          value={inputEmail}
-          id={id}
-          onChange={handleChangeEmail}
-        />
+            <label className="mb-2 mt-4" htmlFor={id}>Responsavel:</label>
+            <InputClientModal 
+              type="text"
+              value={inputResponsible}
+              id={id}
+              onChange={handleChangeResponsible}
+            />
 
-        <label className="mb-2 mt-4" htmlFor={id}>Endereço:</label>
-        <InputClientModal 
-          type="text"
-          value={inputAddress}
-          id={id}
-          onChange={handleChangeAddress}
-        />
+            <label className="mb-2 mt-4" htmlFor={id}>CNPJ:</label>
+            <InputClientModal 
+              type="text"
+              value={inputCnpj}
+              id={id}
+              onChange={handleChangeCnpj}
+            />
 
-        <label className="mb-2 mt-4" htmlFor={id}>Telefone:</label>
-        <InputClientModal 
-          type="phone"
-          value={inputPhone}
-          id={id}
-          onChange={handleChangePhone}
-        />
-        
+            <label className="mb-2 mt-4" htmlFor={id}>Inscrição Estadual:</label>
+            <InputClientModal 
+              type="text"
+              value={inputStateRegistration}
+              id={id}
+              onChange={handleChangeStateRegistration}
+            />
+
+            <label className="mb-2 mt-4" htmlFor={id}>DDD:</label>
+            <InputClientModal 
+              type="text"
+              value={inputDdd}
+              id={id}
+              onChange={handleChangeDdd}
+            />
+
+            <label className="mb-2 mt-4" htmlFor={id}>Telefone:</label>
+            <InputClientModal 
+              type="phone"
+              value={inputPhone}
+              id={id}
+              onChange={handleChangePhone}
+            />
+          </div>          
+
+          <div className="flex flex-col w-1/2 pl-5" id="personalData">
+
+            <label className="mb-2" htmlFor={id}>Email:</label>      
+            <InputClientModal 
+              type="email"
+              value={inputEmail}
+              id={id}
+              onChange={handleChangeEmail}
+            />
+
+            <label className="mb-2 mt-4" htmlFor={id}>Endereço:</label>
+            <InputClientModal 
+              type="text"
+              value={inputAddress}
+              id={id}
+              onChange={handleChangeAddress}
+            />
+
+            <label className="mb-2 mt-4" htmlFor={id}>CEP:</label>
+            <InputClientModal 
+              type="text"
+              value={inputCep}
+              id={id}
+              onChange={handleChangeCep}
+            />
+
+            <label className="mb-2 mt-4" htmlFor={id}>Estado:</label>
+            <InputClientModal 
+              type="text"
+              value={inputState}
+              id={id}
+              onChange={handleChangeState}
+            />
+            
+            <label className="mb-2 mt-4" htmlFor={id}>Cidade:</label>
+            <InputClientModal 
+              type="text"
+              value={inputCity}
+              id={id}
+              onChange={handleChangeCity}
+            />
+            
+            <label className="mb-2 mt-4" htmlFor={id}>Bairro:</label>
+            <InputClientModal 
+              type="text"
+              value={inputDistrict}
+              id={id}
+              onChange={handleChangeDistrict}
+            />
+
+          </div>
+        </div>
+
+
         <div className="flex flex-row items-center text-center justify-between w-full mt-10">
           <FormButton
             type="button"
