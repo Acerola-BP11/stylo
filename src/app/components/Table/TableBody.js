@@ -7,20 +7,28 @@ import ClientModal from '../Modal/ClientModal'
 
 export default function TableBody({
   id,
-  name,
+  razao,
+  responsavel,
+  ddd,
+  telefone,
+  endereço,
+  cnpj,
+  inscricao_estadual,
   email,
-  address,
-  phone
+  cep,
+  estado,
+  cidade,
+  bairro
 }) {
 
   const [isOpenEdit, setIsOpenEdit] = useState(false)
 
   const handleOpenModalEditClient = () => {
-    setIsOpenEdit(true)
+    setIsOpenEdit(true)    
   }
 
   const handleCloseModalEditClient = () => {
-    setIsOpenEdit(false)
+    setIsOpenEdit(false)    
   }
 
   return (
@@ -29,10 +37,18 @@ export default function TableBody({
         <th>
           <input type="checkbox" className="w-5 h-5 cursor-pointer"/>
         </th>        
-        <th className="font-light">{name}</th>
+        <th className="font-light">{razao}</th>
+        <th className="font-light">{responsavel}</th>
+        <th className="font-light">{ddd}</th>
+        <th className="font-light">{telefone}</th>
+        <th className="font-light">{endereço}</th>
+        <th className="font-light">{cnpj}</th>
+        <th className="font-light">{inscricao_estadual}</th>
         <th className="font-light">{email}</th>
-        <th className="font-light">{address}</th>
-        <th className="font-light">{phone}</th>
+        <th className="font-light">{cep}</th>
+        <th className="font-light">{estado}</th>
+        <th className="font-light">{cidade}</th>
+        <th className="font-light">{bairro}</th>
         
         <th>
           <button className="p-1 mr-5" id="editClient" onClick={handleOpenModalEditClient}>
@@ -47,10 +63,18 @@ export default function TableBody({
           {isOpenEdit && (
             <ClientModal 
               id={id}
-              name={name}
+              razao={razao}
+              responsavel={responsavel}
+              ddd={ddd}
+              telefone={telefone}
+              endereço={endereço}
+              cnpj={cnpj}
+              inscricao_estadual={inscricao_estadual}
               email={email}
-              address={address}
-              phone={phone}
+              cep={cep}
+              estado={estado}
+              cidade={cidade}
+              bairro={bairro}
               close={handleCloseModalEditClient}
             />
           )}

@@ -17,7 +17,7 @@
   }
 }
 
-body {
+body {  
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
       to bottom,
@@ -28,17 +28,31 @@ body {
 }
 
 /* Table structure */
-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
 th, td {
   padding: 8px;
   text-align: left;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;  
+}
+
+tr {
+  padding: 8px;
 }
 
 tr:hover {
   background-color: #f5f5f5;
+}
+
+/* ScrollBar */       
+*::-webkit-scrollbar {
+  width: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  border-radius: 8px;
+  background-color: #e7e7e7;
+}
+
+*::-webkit-scrollbar-thumb {  
+  border-radius: 8px;
+  background-color: rgb(193, 193, 193)
 }

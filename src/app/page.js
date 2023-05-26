@@ -4,7 +4,7 @@ import Main from './components/Main'
 export default function Home() {  
 
   return (    
-    <div className="flex min-h-screen flex-col items-center">
+    <div className="flex max-h-screen w-full flex-col items-center overflow-hidden">
       <Header />
       <Main />      
     </div>
