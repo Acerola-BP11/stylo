@@ -10,7 +10,7 @@ export default function Main() {
   return (
     <main className="flex flex-col w-full h-full overflow-hidden bg-white p-10">
       <div className="scrollbar overflow-auto">
-        <table className="w-max border-collapse whitespace-nowrap">
+        <table className="w-full min-w-max border-collapse whitespace-nowrap">
           <TableHead /> 
                 
           {clients.map((client) => {
