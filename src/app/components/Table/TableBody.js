@@ -1,5 +1,3 @@
-'use client'
-
 import { useState } from 'react'
 import Image from 'next/image'
 
@@ -32,7 +30,7 @@ export default function TableBody({
 
   const handleCloseModalEditClient = () => {
     setIsOpenEdit(false)    
-  }
+  }   
 
   // Confirm Modal
   const customStyles = {
@@ -49,20 +47,20 @@ export default function TableBody({
     <tbody id="root">
       <tr>
         <th>
-          <input type="checkbox" className="w-5 h-5 cursor-pointer"/>
+          <input type="checkbox" className="w-5 h-5 cursor-pointer" />
         </th>        
         <th className="font-light">{razao}</th>
-        <th className="font-light">{responsavel}</th>
+        <th className="font-light">{cnpj}</th>
+        <th className="font-light">{email}</th>
         <th className="font-light">{ddd}</th>
         <th className="font-light">{telefone}</th>
-        <th className="font-light">{endereco}</th>
-        <th className="font-light">{cnpj}</th>
-        <th className="font-light">{inscricao_estadual}</th>
-        <th className="font-light">{email}</th>
-        <th className="font-light">{cep}</th>
         <th className="font-light">{estado}</th>
         <th className="font-light">{cidade}</th>
+        <th className="font-light">{endereco}</th>
+        <th className="font-light">{cep}</th>
         <th className="font-light">{bairro}</th>
+        <th className="font-light">{responsavel}</th>
+        <th className="font-light">{inscricao_estadual}</th>
         
         <th>
           <button className="p-1 mr-5" id="editClient" onClick={handleOpenModalEditClient}>

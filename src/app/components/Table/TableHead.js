@@ -1,9 +1,23 @@
+'use client'
+
+import { useState } from "react"
+
 export default function TableHead() {
+  const [isChecked, setIsChecked] = useState(false)
+
+  const handleCheckboxChange = (e) => {
+    setIsChecked(e.target.checked)             
+  }  
+
   return (
     <thead>
       <tr>            
         <th>
-          <input type="checkbox" className="w-5 h-5 cursor-pointer"/>
+          <input 
+            type="checkbox" 
+            className="w-5 h-5 cursor-pointer" 
+            onChange={handleCheckboxChange} 
+          />
         </th>  
         <th className="text-blue-400">Razao</th>
         <th className="text-blue-400">Responsavel</th>
@@ -20,5 +34,5 @@ export default function TableHead() {
         <th className="text-blue-400">Ações</th>
       </tr>
     </thead>
-  )
+  )  
 }
