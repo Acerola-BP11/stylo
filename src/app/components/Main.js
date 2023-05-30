@@ -22,6 +22,12 @@ export default function Main() {
   const handleDeleteItems = () => {
     console.log('deletar')
 
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');            
+
+    checkboxes.forEach((checkbox) => {      
+      console.log(checkbox);
+      // Já esta pegando o ID, agora é só usar esse ID para deletar no banco
+    });    
   }
 
   const handleAddItems = () => {
@@ -64,12 +70,12 @@ export default function Main() {
               <th className="text-blue-400">Ações</th>
             </tr>
           </thead>
-
                 
           {clients.map((client) => {
             return (
               <TableBody 
                 key={client.id}
+                id={client.id}
                 razao={client.razao}
                 responsavel={client.responsavel}
                 ddd={client.ddd}

@@ -9,7 +9,7 @@ export default function TableActions({
   return (
     <div className="flex flex-row mb-10 items-center justify-between">
       
-      <div className="">
+      <div>
         <SearchInput />
       </div>
       

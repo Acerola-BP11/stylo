@@ -47,7 +47,7 @@ export default function TableBody({
     <tbody id="root">
       <tr>
         <th>
-          <input type="checkbox" className="w-5 h-5 cursor-pointer" />
+          <input type="checkbox" className="w-5 h-5 cursor-pointer" id={id}/>
         </th>        
         <th className="font-light">{razao}</th>
         <th className="font-light">{cnpj}</th>
