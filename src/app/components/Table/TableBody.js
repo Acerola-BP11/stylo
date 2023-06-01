@@ -1,36 +1,19 @@
 import { useState } from 'react'
+import Modal from 'react-modal'
 import Image from 'next/image'
 
-import Modal from 'react-modal'
 import ClientModal from '../Modal/ClientModal'
 
-export default function TableBody({
-  id,
-  razao,
-  responsavel,
-  ddd,
-  telefone,
-  endereco,
-  cnpj,
-  inscricao_estadual,
-  email,
-  cep,
-  estado,
-  cidade,
-  bairro
-}) {
+Modal.setAppElement('#root')
 
-  Modal.setAppElement(document.getElementById('root'))
+export default function TableBody({
+  ...data
+}) {
 
   const [isOpenEdit, setIsOpenEdit] = useState(false)
 
-  const handleOpenModalEditClient = () => {
-    setIsOpenEdit(true)    
-  }
-
-  const handleCloseModalEditClient = () => {
-    setIsOpenEdit(false)    
-  }   
+  const handleOpenModalEditClient = () => { setIsOpenEdit(true) }
+  const handleCloseModalEditClient = () => { setIsOpenEdit(false) }   
 
   // Confirm Modal
   const customStyles = {
@@ -47,20 +30,20 @@ export default function TableBody({
     <tbody id="root">
       <tr>
         <th>
-          <input type="checkbox" className="w-5 h-5 cursor-pointer" id={id}/>
+          <input type="checkbox" className="w-5 h-5 cursor-pointer" id={data.id}/>
         </th>        
-        <th className="font-light">{razao}</th>
-        <th className="font-light">{cnpj}</th>
-        <th className="font-light">{email}</th>
-        <th className="font-light">{ddd}</th>
-        <th className="font-light">{telefone}</th>
-        <th className="font-light">{estado}</th>
-        <th className="font-light">{cidade}</th>
-        <th className="font-light">{endereco}</th>
-        <th className="font-light">{cep}</th>
-        <th className="font-light">{bairro}</th>
-        <th className="font-light">{responsavel}</th>
-        <th className="font-light">{inscricao_estadual}</th>
+        <th className="font-light">{data.razao}</th>
+        <th className="font-light">{data.cnpj}</th>
+        <th className="font-light">{data.email}</th>
+        <th className="font-light">{data.ddd}</th>
+        <th className="font-light">{data.telefone}</th>
+        <th className="font-light">{data.estado}</th>
+        <th className="font-light">{data.cidade}</th>
+        <th className="font-light">{data.endereco}</th>
+        <th className="font-light">{data.cep}</th>
+        <th className="font-light">{data.bairro}</th>
+        <th className="font-light">{data.responsavel}</th>
+        <th className="font-light">{data.inscricao_estadual}</th>
         
         <th>
           <button className="p-1 mr-5" id="editClient" onClick={handleOpenModalEditClient}>
@@ -78,20 +61,22 @@ export default function TableBody({
             style={customStyles}
           >
             <ClientModal 
-              id={id}
-              razao={razao}
-              responsavel={responsavel}
-              ddd={ddd}
-              telefone={telefone}
-              endereco={endereco}
-              cnpj={cnpj}
-              inscricao_estadual={inscricao_estadual}
-              email={email}
-              cep={cep}
-              estado={estado}
-              cidade={cidade}
-              bairro={bairro}
+              id={data.id}
+              razao={data.razao}
+              responsavel={data.responsavel}
+              ddd={data.ddd}
+              telefone={data.telefone}
+              endereco={data.endereco}
+              cnpj={data.cnpj}
+              inscricao_estadual={data.inscricao_estadual}
+              email={data.email}
+              cep={data.cep}
+              estado={data.estado}
+              cidade={data.cidade}
+              bairro={data.bairro}
               close={handleCloseModalEditClient}
+              textButton={'Editar'}
+              action={'update'}
             />
           </Modal>
 

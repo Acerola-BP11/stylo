@@ -2,7 +2,8 @@ export default function InputClientModal({
   type,
   value,
   id,
-  onChange
+  onChange,
+  required
 }) {
   return (
     <input 
@@ -11,6 +12,7 @@ export default function InputClientModal({
       value={value}
       id={id}
       onChange={onChange}
+      required={required}
     />
   )
 }

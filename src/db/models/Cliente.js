@@ -25,6 +25,7 @@ const Cliente = sequelize.define('Cliente', {
     },
     endereco:{
         type: DataTypes.TEXT,
+        allowNull: false
     },
     cnpj:{
         type: DataTypes.INTEGER(13),

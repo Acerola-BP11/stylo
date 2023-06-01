@@ -4,13 +4,16 @@ import TrashButton from '../Buttons/TrashButton'
 
 export default function TableActions({
   deleteItems,
-  addItems
+  addItems,
+  searchItems
 }) {
   return (
     <div className="flex flex-row mb-10 items-center justify-between">
       
       <div>
-        <SearchInput />
+        <SearchInput 
+          onClick={searchItems}
+        />
       </div>
       
       <div className="flex flex-row">
